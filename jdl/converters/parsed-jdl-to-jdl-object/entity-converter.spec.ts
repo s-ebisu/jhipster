@@ -68,5 +68,88 @@ describe('jdl - EntityConverter', () => {
 `);
       });
     });
+
+    context('when passing entities with security', () => {
+      let convertedEntities;
+
+      before(() => {
+        convertedEntities = convertEntities(
+          [
+            {
+              name: 'A',
+              documentation: '/** No comment */',
+              secure: {
+                securityType: 'roles',
+                roles: [
+                  {
+                    role: 'ROLE_ADMIN',
+                    actionList: ['GET', 'POST'],
+                  },
+                ],
+              },
+            },
+            {
+              name: 'B',
+              tableName: 'b_table',
+              secure: {
+                securityType: 'roles',
+                roles: [
+                  {
+                    role: 'ROLE_ADMIN',
+                    actionList: ['GET', 'POST'],
+                  },
+                ],
+              },
+            },
+          ],
+          () => [],
+        );
+      });
+
+      it('should convert them', () => {
+        expect(convertedEntities).toMatchInlineSnapshot(`
+[
+  JDLEntity {
+    "annotations": {},
+    "comment": "/** No comment */",
+    "fields": {},
+    "name": "A",
+    "secure": JDLSecure {
+      "roles": [
+        {
+          "actionList": [
+            "GET",
+            "POST",
+          ],
+          "role": "ROLE_ADMIN",
+        },
+      ],
+      "securityType": "roles",
+    },
+    "tableName": "A",
+  },
+  JDLEntity {
+    "annotations": {},
+    "comment": undefined,
+    "fields": {},
+    "name": "B",
+    "secure": JDLSecure {
+      "roles": [
+        {
+          "actionList": [
+            "GET",
+            "POST",
+          ],
+          "role": "ROLE_ADMIN",
+        },
+      ],
+      "securityType": "roles",
+    },
+    "tableName": "b_table",
+  },
+]
+`);
+      });
+    });
   });
 });

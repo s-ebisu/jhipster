@@ -18,8 +18,9 @@
  */
 
 import { lowerFirst } from 'lodash-es';
-import { JDLEntity } from '../../models/index.js';
+import { JDLEntity, JDLSecure } from '../../models/index.js';
 import { formatComment } from '../../utils/format-utils.js';
+import { JDLSecurityType } from '../../models/jdl-security-type.js';
 
 export default { convertEntities };
 
@@ -47,6 +48,12 @@ export function convertEntities(parsedEntities, jdlFieldGetterFunction): JDLEnti
     });
     const jdlFields = jdlFieldGetterFunction.call(undefined, parsedEntity);
     jdlEntity.addFields(jdlFields);
+    if (parsedEntity.secure && parsedEntity.secure.securityType !== JDLSecurityType.None) {
+      // jdlEntity.secure = jdlSecureGetterFunction.call(undefined, parsedEntity);
+      jdlEntity.secure = new JDLSecure(parsedEntity.secure);
+    } else {
+      delete jdlEntity.secure;
+    }
     return jdlEntity;
   });
 }

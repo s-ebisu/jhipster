@@ -123,7 +123,7 @@ describe('jdl - JDL DSL API', () => {
       });
 
       it('should provide suggestions', () => {
-        expect(result).to.have.lengthOf(11);
+        expect(result).to.have.lengthOf(12);
         expect(result).to.have.members([
           tokens.AT,
           tokens.APPLICATION,
@@ -132,6 +132,7 @@ describe('jdl - JDL DSL API', () => {
           tokens.ENTITY,
           tokens.RELATIONSHIP,
           tokens.ENUM,
+          tokens.SECURE,
           tokens.JAVADOC,
           tokens.UNARY_OPTION,
           tokens.BINARY_OPTION,

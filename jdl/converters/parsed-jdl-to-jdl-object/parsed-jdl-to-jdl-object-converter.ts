@@ -29,6 +29,7 @@ import { convertValidations } from './validation-converter.js';
 import { convertOptions } from './option-converter.js';
 import { convertRelationships } from './relationship-converter.js';
 import { convertDeployments } from './deployment-converter.js';
+import { JDLEntity, JDLSecure } from '../../models/index.js';
 
 let parsedContent;
 let configuration;
@@ -58,6 +59,7 @@ export function parseFromConfigurationObject(configurationObject): JDLObject {
   fillClassesAndFields();
   fillAssociations();
   fillOptions();
+  fillSecurity();
   return jdlObject;
 }
 
@@ -165,6 +167,31 @@ function fillOptions() {
     globallyAddMicroserviceOption(configuration.applicationName);
   }
   fillUnaryAndBinaryOptions();
+}
+
+function fillSecurity() {
+  const jdlSecureStmts = parsedContent.secure;
+
+  for (let i = 0; i < jdlSecureStmts.length; i++) {
+    const jdlSecureStmt = jdlSecureStmts[i];
+    // check if entityNames[0] === '*'
+    if (jdlSecureStmt.entityNames && jdlSecureStmt.entityNames.length === 1 && jdlSecureStmt.entityNames[0] === '*') {
+      jdlSecureStmt.entityNames = [];
+      parsedContent.entities.forEach(entity => {
+        if (!jdlSecureStmt.excludedNames.includes(entity.name)) {
+          jdlSecureStmt.entityNames.push(entity.name);
+        }
+      });
+    }
+
+    for (let j = 0; j < jdlSecureStmt.entityNames.length; j++) {
+      const entityName = jdlSecureStmt.entityNames[j];
+      const entity: JDLEntity = jdlObject.getEntity(entityName);
+      if (entity) {
+        entity.secure = new JDLSecure(jdlSecureStmt);
+      }
+    }
+  }
 }
 
 // TODO: move it to another file? it may not be the parser's responsibility to do it

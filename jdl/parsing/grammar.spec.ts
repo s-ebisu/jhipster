@@ -19,7 +19,7 @@
 
 /* eslint-disable no-unused-expressions */
 
-import { before, it, describe, expect, expect as jestExpect } from 'esmocha';
+import { before, it, describe, expect as jestExpect } from 'esmocha';
 import { expect } from 'chai';
 import { parseFromContent } from '../readers/jdl-reader.js';
 import { relationshipTypes, validations, unaryOptions, binaryOptions } from '../jhipster/index.js';
@@ -2037,6 +2037,36 @@ entity A {
 }
 `);
         });
+      });
+    });
+  });
+  context('when parsing secure option', () => {
+    context('define entities', () => {
+      it('secure using the * keyword', () => {
+        const content = parseFromContent('secure * with roles { ROLE_ADMIN allows (get)}');
+        const parsedSecure = content.secure[0];
+        expect(parsedSecure.entityNames).to.deep.equal(['*']);
+      });
+      it('secure using the all keyword', () => {
+        const content = parseFromContent('secure * with roles { ROLE_ADMIN allows (get)}');
+        const parsedSecure = content.secure[0];
+        expect(parsedSecure.entityNames).to.deep.equal(['*']);
+      });
+      it('secure using several entities', () => {
+        const content = parseFromContent('secure A,B,C with roles { ROLE_ADMIN allows (get)}');
+        const parsedSecure = content.secure[0];
+        expect(parsedSecure.entityNames).to.deep.equal(['A', 'B', 'C']);
+      });
+      it('secure using the except keyword', () => {
+        const content = parseFromContent('secure * except A with roles { ROLE_ADMIN allows (get)}');
+        const parsedSecure = content.secure[0];
+        expect(parsedSecure.entityNames).to.deep.equal(['*']);
+        expect(parsedSecure.excludedNames).to.deep.equal(['A']);
+      });
+      it('secure entity with role that is empty', () => {
+        const content = parseFromContent('secure A with roles { ROLE_ADMIN allows ()}');
+        const parsedSecure = content.secure[0];
+        expect(parsedSecure.entityNames).to.deep.equal(['A']);
       });
     });
   });
