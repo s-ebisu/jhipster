@@ -51,6 +51,10 @@ export const vueFiles = {
         'webpack/vue.utils.js',
       ],
     }),
+    clientRootTemplatesBlock({
+      condition: ctx => ctx.microfrontend && ctx.clientBundlerRsbuild,
+      templates: ['rsbuild.config.ts.jhi.vue'],
+    }),
     {
       condition: generator => generator.microfrontend,
       ...clientApplicationTemplatesBlock(),
