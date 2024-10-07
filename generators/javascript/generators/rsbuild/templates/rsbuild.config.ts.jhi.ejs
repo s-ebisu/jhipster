@@ -40,6 +40,28 @@ export default defineConfig({
       root: path.join(__dirname, './<%= this.relativeDir(clientRootDir, clientDistDir) %>'),
     },
   },
+  copy: [
+            {
+              // https://github.com/swagger-api/swagger-ui/blob/v4.6.1/swagger-ui-dist-package/README.md
+              context: require('swagger-ui-dist').getAbsoluteFSPath(),
+              from: '*.{js,css,html,png}',
+              to: 'swagger-ui/',
+              globOptions: { ignore: ['**/index.html'] },
+            },
+            {
+              from: path.join(path.dirname(require.resolve('axios/package.json')), 'dist/axios.min.js'),
+              to: 'swagger-ui/',
+            },
+            { from: './<%= this.relativeDir(clientRootDir, clientSrcDir) %>swagger-ui/', to: 'swagger-ui/' },
+            { from: './<%= this.relativeDir(clientRootDir, clientSrcDir) %>content/', to: 'content/' },
+            { from: './<%= this.relativeDir(clientRootDir, clientSrcDir) %>favicon.ico', to: 'favicon.ico' },
+            {
+              from: './<%= this.relativeDir(clientRootDir, clientSrcDir) %>manifest.webapp',
+              to: 'manifest.webapp',
+            },
+            // jhipster-needle-add-assets-to-webpack - JHipster will add/remove third-party resources in this array
+            { from: './<%= this.relativeDir(clientRootDir, clientSrcDir) %>robots.txt', to: 'robots.txt' },
+  ],
   html: {
     template: './index.html',
     scriptLoading: 'defer',
