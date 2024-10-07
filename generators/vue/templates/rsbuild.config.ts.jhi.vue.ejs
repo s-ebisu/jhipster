@@ -20,7 +20,9 @@
 import { pluginVue } from '@rsbuild/plugin-vue';
 import { pluginSass } from '@rsbuild/plugin-sass';
 <%_ if (microfrontend) { _%>
-import { mfConfig } from './module-federation.config.cjs';
+import mfConfig from './module-federation.config.cjs';
+
+console.log(mfConfig);
 <%_ } _%>
 <&_ } -&>
 
