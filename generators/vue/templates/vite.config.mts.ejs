@@ -38,8 +38,7 @@ const sharedAppVersion = '0.0.0';
 const { getAbsoluteFSPath } = await import('swagger-ui-dist');
 const swaggerUiPath = getAbsoluteFSPath();
 
-// eslint-disable-next-line prefer-const
-let config = defineConfig({
+export default mergeConfig({
   plugins: [
     vue(),
     viteStaticCopy({
@@ -114,10 +113,9 @@ let config = defineConfig({
       ]),
     ),
   },
-});
-
+},
 <%_ if (microfrontend && clientBundlerVite) { _%>
-config = mergeConfig(config, {
+{
   build: {
     modulePreload: false,
     minify: false,
@@ -171,8 +169,7 @@ config = mergeConfig(config, {
       },
     }),
   ],
-});
+},
 <%_ } _%>
 // jhipster-needle-add-vite-config - JHipster will add custom config
-
-export default config;
+);
