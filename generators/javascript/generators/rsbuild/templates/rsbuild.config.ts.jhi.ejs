@@ -27,6 +27,7 @@ _&>
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from '@rsbuild/core';
+import { getAbsoluteFSPath } from 'swagger-ui-dist';
 <&- fragments.importsSection() -&>
 
 const __filename = fileURLToPath(import.meta.url);
@@ -43,7 +44,7 @@ export default defineConfig({
   copy: [
             {
               // https://github.com/swagger-api/swagger-ui/blob/v4.6.1/swagger-ui-dist-package/README.md
-              context: require('swagger-ui-dist').getAbsoluteFSPath(),
+              context: getAbsoluteFSPath(),
               from: '*.{js,css,html,png}',
               to: 'swagger-ui/',
               globOptions: { ignore: ['**/index.html'] },
