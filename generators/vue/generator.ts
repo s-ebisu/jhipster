@@ -205,17 +205,27 @@ export default class VueGenerator extends BaseApplicationGenerator {
         }
       },
       addMicrofrontendDependencies({ application }) {
-        if (!application.microfrontend) return;
-        if (application.clientBundlerVite) {
+        const { applicationTypeGateway, clientBundlerVite, clientBundlerWebpack, enableTranslation, microfrontend } = application;
+        if (!microfrontend) return;
+        if (clientBundlerVite) {
           this.packageJson.merge({
+            dependencies: applicationTypeGateway ? {
+              '@module-federation/runtime': null,
+            } : {},
             devDependencies: {
-              '@originjs/vite-plugin-federation': '1.3.6',
+              '@module-federation/vite': null,
             },
           });
-        } else if (application.clientBundlerWebpack) {
+        } else if (clientBundlerWebpack) {
+          if (applicationTypeGateway) {
+            this.packageJson.merge({
+              devDependencies: {
+                '@module-federation/utilities': null,
+              },
+            });
+          }
           this.packageJson.merge({
             devDependencies: {
-              '@module-federation/utilities': null,
               'browser-sync-webpack-plugin': null,
               'copy-webpack-plugin': null,
               'css-loader': null,
@@ -234,7 +244,7 @@ export default class VueGenerator extends BaseApplicationGenerator {
               'webpack-dev-server': null,
               'webpack-merge': null,
               'workbox-webpack-plugin': null,
-              ...(application.enableTranslation
+              ...(enableTranslation
                 ? {
                     'folder-hash': null,
                     'merge-jsons-webpack-plugin': null,
