@@ -16,11 +16,11 @@ LABEL ALIAS=postgresql
 FROM quay.io/keycloak/keycloak:25.0.1
 LABEL ALIAS=keycloak
 
-FROM mysql:9.0.1
+FROM mysql:9.1.0
 
 FROM mariadb:11.5.2
 
-FROM mongo:8.0.0
+FROM mongo:8.0.1
 LABEL ALIAS=mongodb
 
 FROM couchbase/server:7.6.3
@@ -31,14 +31,14 @@ FROM cassandra:5.0
 FROM mcr.microsoft.com/mssql/server:2019-CU16-GDR1-ubuntu-20.04
 LABEL ALIAS=mssql
 
-FROM neo4j:5.24.1
+FROM neo4j:5.24.2
 
-FROM hazelcast/management-center:5.5.2
+FROM hazelcast/management-center:5.6.0
 LABEL ALIAS=hazelcast
 
 FROM memcached:1.6.31-alpine
 
-FROM redis:7.4.0
+FROM redis:7.4.1
 
 FROM confluentinc/cp-kafka:7.7.1
 LABEL ALIAS=kafka
@@ -52,7 +52,7 @@ LABEL ALIAS=pulsar
 FROM sonarqube:10.7.0-community
 LABEL ALIAS=sonar
 
-FROM docker.io/bitnami/consul:1.19.2
+FROM docker.io/bitnami/consul:1.20.0
 LABEL ALIAS=consul
 
 FROM prom/prometheus:v2.54.1

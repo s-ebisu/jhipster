@@ -7,11 +7,11 @@ feign-reactor-bom = { module = 'com.playtika.reactivefeign:feign-reactor-bom', v
 
 # Cucumber
 testng = { module = 'org.testng:testng', version = '7.10.2' }
-cucumber-bom = { module = 'io.cucumber:cucumber-bom', version = '7.20.0' }
+cucumber-bom = { module = 'io.cucumber:cucumber-bom', version = '7.20.1' }
 
-mongock-bom = { module = 'io.mongock:mongock-bom', version = '5.4.4' }
+mongock-bom = { module = 'io.mongock:mongock-bom', version = '5.5.0' }
 
-neo4j-migrations-spring-boot-starter = { module = 'eu.michael-simons.neo4j:neo4j-migrations-spring-boot-starter', version = '2.13.1' }
+neo4j-migrations-spring-boot-starter = { module = 'eu.michael-simons.neo4j:neo4j-migrations-spring-boot-starter', version = '2.13.2' }
 
 # Cassandra
 lz4-java = { module = 'org.lz4:lz4-java', version = '1.8.0' }
@@ -37,6 +37,6 @@ gradle-enterprise = { id = 'com.gradle.enterprise', version = '3.18.1' }
 
 common-custom-user-data-gradle-plugin = { id = 'com.gradle.common-custom-user-data-gradle-plugin', version = '2.0.2' }
 
-gatling-gradle = { id = 'io.gatling.gradle', version = '3.12.0.2' }
+gatling-gradle = { id = 'io.gatling.gradle', version = '3.12.0.3' }
 
-gradle-openapi-generator = { id = 'org.openapi.generator', version = '7.8.0' }
+gradle-openapi-generator = { id = 'org.openapi.generator', version = '7.9.0' }

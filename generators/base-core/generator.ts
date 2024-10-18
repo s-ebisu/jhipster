@@ -462,7 +462,7 @@ You can ignore this error by passing '--skip-checks' to jhipster command.`);
     if (!generatorCommand.configs) {
       throw new Error(`Configs not found for generator ${this.options.namespace}`);
     }
-    return this.prompt(this.prepareQuestions(generatorCommand.configs));
+    return this.prompt(this.prepareQuestions(generatorCommand.configs) as any);
   }
 
   /**
@@ -553,7 +553,7 @@ You can ignore this error by passing '--skip-checks' to jhipster command.`);
           } else if (optionDesc.scope !== 'none') {
             throw new Error(`Scope ${optionDesc.scope} not supported`);
           }
-        } else if (optionDesc.default && optionDesc.scope === 'generator' && this[optionName] === undefined) {
+        } else if (optionDesc.default !== undefined && optionDesc.scope === 'generator' && this[optionName] === undefined) {
           this[optionName] = optionDesc.default;
         }
       });
@@ -1372,8 +1372,8 @@ templates: ${JSON.stringify(existingTemplates, null, 2)}`;
   /**
    * Create a simple-git instance using current destinationPath as baseDir.
    */
-  createGit() {
-    return simpleGit({ baseDir: this.destinationPath() }).env({
+  createGit(options?: Parameters<typeof simpleGit>[0]) {
+    return simpleGit({ baseDir: this.destinationPath(), ...options }).env({
       ...process.env,
       LANG: 'en',
     });
