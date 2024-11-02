@@ -19,7 +19,7 @@ export type FrontendApplication = ApplicationClientProperties &
 /**
  * Deprecated in favor of frontend application.
  */
-export type ClientApplication = JavaScriptApplication & PartialAngularApplication;
+export type ClientApplication = JavaScriptApplication & PartialAngularApplication & FrontendApplication;
 
 export type ClientResources = {
   /**
