@@ -102,14 +102,14 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -143,12 +143,12 @@ jhipster:
       - SPRING_COUCHBASE_CONNECTION_STRING=mscouchbase-couchbase
       - JHIPSTER_DATABASE_COUCHBASE_BUCKET_NAME=mscouchbase
       - JHIPSTER_SLEEP=20
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -291,14 +291,14 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -331,12 +331,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_CASSANDRA_CONTACTPOINTS=mscassandra-cassandra
       - JHIPSTER_SLEEP=10
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -544,14 +544,14 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -584,12 +584,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -623,12 +623,12 @@ jhipster:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://mspsql-postgresql:5432/mspsql
       - SPRING_LIQUIBASE_URL=jdbc:postgresql://mspsql-postgresql:5432/mspsql
       - SPRING_ELASTICSEARCH_URIS=http://mspsql-elasticsearch:9200
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -675,12 +675,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_HOST=consul
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATA_MONGODB_URI=mongodb://msmongodb-mongodb:27017/msmongodb
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -712,12 +712,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mariadb://msmariadb-mariadb:3306/msmariadb?useLegacyDatetimeCode=false
       - SPRING_LIQUIBASE_URL=jdbc:mariadb://msmariadb-mariadb:3306/msmariadb?useLegacyDatetimeCode=false
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -922,14 +922,14 @@ jhipster:
       - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/realms/jhipster
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=web_app
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=web_app
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -967,12 +967,12 @@ jhipster:
       - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/realms/jhipster
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=internal
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=internal
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1011,12 +1011,12 @@ jhipster:
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=internal
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=internal
       - SPRING_ELASTICSEARCH_URIS=http://mspsql-elasticsearch:9200
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1070,12 +1070,12 @@ jhipster:
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=internal
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=internal
       - JHIPSTER_SLEEP=20
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1113,12 +1113,12 @@ jhipster:
       - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/realms/jhipster
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=internal
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=internal
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1348,14 +1348,14 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1388,12 +1388,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1427,12 +1427,12 @@ jhipster:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://mspsql-postgresql:5432/mspsql
       - SPRING_LIQUIBASE_URL=jdbc:postgresql://mspsql-postgresql:5432/mspsql
       - SPRING_ELASTICSEARCH_URIS=http://mspsql-elasticsearch:9200
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1479,12 +1479,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_HOST=consul
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATA_MONGODB_URI=mongodb://msmongodb-mongodb:27017/msmongodb
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1679,14 +1679,14 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1719,12 +1719,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1758,12 +1758,12 @@ jhipster:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://mspsql-postgresql:5432/mspsql
       - SPRING_LIQUIBASE_URL=jdbc:postgresql://mspsql-postgresql:5432/mspsql
       - SPRING_ELASTICSEARCH_URIS=http://mspsql-elasticsearch:9200
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1812,12 +1812,12 @@ jhipster:
       - SPRING_COUCHBASE_CONNECTION_STRING=mscouchbase-couchbase
       - JHIPSTER_DATABASE_COUCHBASE_BUCKET_NAME=mscouchbase
       - JHIPSTER_SLEEP=20
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -1850,12 +1850,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mariadb://msmariadb-mariadb:3306/msmariadb?useLegacyDatetimeCode=false
       - SPRING_LIQUIBASE_URL=jdbc:mariadb://msmariadb-mariadb:3306/msmariadb?useLegacyDatetimeCode=false
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -2001,14 +2001,14 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -2041,12 +2041,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -2189,14 +2189,14 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -2229,12 +2229,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -2402,14 +2402,14 @@ management:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -2442,12 +2442,12 @@ management:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -2679,14 +2679,14 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -2719,12 +2719,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -2832,14 +2832,14 @@ Launch all your infrastructure by running: \`docker compose up -d\`.
       - SPRING_DATASOURCE_URL=jdbc:mysql://samplemysql-mysql:3306/samplemysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://samplemysql-mysql:3306/samplemysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_ELASTICSEARCH_URIS=http://samplemysql-elasticsearch:9200
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -2966,12 +2966,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -3096,14 +3096,14 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_R2DBC_URL=r2dbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://jhgate-mysql:3306/jhgate?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -3228,12 +3228,12 @@ jhipster:
       - SPRING_CLOUD_CONSUL_PORT=8500
       - SPRING_DATASOURCE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
       - SPRING_LIQUIBASE_URL=jdbc:mysql://msmysql-mysql:3306/msmysql?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&createDatabaseIfNotExist=true
+      - THC_PORT=8081
+      - THC_PATH=/management/health
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8081/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
@@ -3338,14 +3338,14 @@ Launch all your infrastructure by running: \`docker compose up -d\`.
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
       - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle-mono-oracle:1521:oracle-mono
       - SPRING_LIQUIBASE_URL=jdbc:oracle:thin:@oracle-mono-oracle:1521:oracle-mono
+      - THC_PORT=8080
+      - THC_PATH=/management/health
     ports:
       - 8080:8080
     healthcheck:
       test:
         - CMD
-        - curl
-        - -f
-        - http://localhost:8080/management/health
+        - /workspace/health-check
       interval: 5s
       timeout: 5s
       retries: 40
