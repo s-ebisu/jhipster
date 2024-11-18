@@ -1,5 +1,5 @@
 ---
-name: 💥 Report an issue using `jhipster info`
+name: 💥 Report an issue using Application JDL
 about: Report a problem with JHipster itself.
 ---
 
@@ -15,11 +15,16 @@ about: Report a problem with JHipster itself.
 
 <!-- Explain the bug, if an error is being thrown a stack trace helps -->
 
-##### **JHipster info**
+##### **JHipster JDL**
 
-To provide all information we need, you should run `jhipster info` in the project root folder (or workspaces root for microservices), and
-copy/paste the result here.
-`jhipster info` removes sentitive information like rememberKey, jwtSecretKey. Double check if there is any other sensitive info.
+  <details>
+  <summary>JDL definitions</summary>
+  <pre>
+     JDL content here
+  </pre>
+  </details>
+
+The information is mandatory for bug reports. This will allow us to use automated tests and genarate the broken sample using `jhipster from-issue` command.
 
 ##### **Motivation for or Use Case**
 
