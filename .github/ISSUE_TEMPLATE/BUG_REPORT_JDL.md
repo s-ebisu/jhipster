@@ -1,5 +1,5 @@
 ---
-name: 💥 Report an issue using Application JDL
+name: 💥 Report an issue using one or more Application JDLs
 about: Report a problem with JHipster itself.
 ---
 

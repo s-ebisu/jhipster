@@ -21,6 +21,8 @@ To provide all information we need, you should run `jhipster info` in the projec
 copy/paste the result here.
 `jhipster info` removes sentitive information like rememberKey, jwtSecretKey. Double check if there is any other sensitive info.
 
+The information is mandatory for bug reports. This will allow us to use automated tests and genarate the broken sample using `jhipster from-issue` command.
+
 ##### **Motivation for or Use Case**
 
 <!-- Explain why this is a bug for you -->
