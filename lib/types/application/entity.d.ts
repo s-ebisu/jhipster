@@ -27,11 +27,6 @@ import type { FakerWithRandexp } from '../../../generators/base/support/faker.ts
 import type { Field } from './field.js';
 import type { Relationship } from './relationship.js';
 
-type AngularEntity = {
-  entityAngularAuthorities?: string;
-  entityAngularReadAuthorities?: string;
-};
-
 export type PrimaryKey<F extends BaseField = Field> = {
   name: string;
   fields: F[];
@@ -50,8 +45,7 @@ type ClientSample = Record<string, string | number | boolean | null>;
 
 export interface Entity<F extends BaseField = Field, R extends BaseRelationship = never>
   extends Omit<Required<BaseEntity<F>>, 'relationships'>,
-    SpringEntity,
-    AngularEntity {
+    SpringEntity {
   changelogDateForRecent: any;
   relationships: (IsNever<R> extends true ? Relationship<Omit<Entity, 'relationships'>> : R)[];
   otherRelationships: (IsNever<R> extends true ? Relationship<Omit<Entity, 'relationships'>> : R)[];
